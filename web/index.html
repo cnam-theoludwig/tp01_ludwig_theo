@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main class="container my-5">
+      <section>
+        <h1>Création de compte client</h1>
+
+        <form id="customerForm">
+          <div class="input-container input-container-row">
+            <div>
+              <label for="firstname">Prénom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                name="firstname"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="lastname">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                name="lastname"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-container">
+            <label for="address">Adresse</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              name="address"
+              required
+            />
+          </div>
+
+          <div class="input-container">
+            <label for="zipCode">Code Postal</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zipCode"
+              name="zipCode"
+              required
+            />
+          </div>
+
+          <div class="input-container">
+            <label for="city">Ville</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              name="city"
+              required
+            />
+          </div>
+
+          <div class="input-container">
+            <label for="phone">Téléphone</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              required
+            />
+          </div>
+
+          <div class="input-container">
+            <label for="gender">Civilité</label>
+            <select class="form-control" id="gender" name="gender">
+              <option value="man">Monsieur</option>
+              <option value="woman">Madame</option>
+            </select>
+          </div>
+
+          <div class="input-container input-container-row">
+            <div>
+              <label for="login">Login</label>
+              <input
+                type="text"
+                class="form-control"
+                id="login"
+                name="login"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="input-container input-container-row">
+            <div>
+              <label for="password">Mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="passwordConfirmation"
+                >Confirmer le mot de passe</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="passwordConfirmation"
+                name="passwordConfirmation"
+                required
+              />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Créer un compte</button>
+        </form>
+
+        <ul class="my-3" id="errors">
+          <li class="error">
+            <strong>Erreur:</strong>
+            <span>message</span>
+          </li>
+        </ul>
+
+        <p class="my-3" id="success">
+          <strong>Succès:</strong>
+          <span>Client enregistré!</span>
+        </p>
+      </section>
+
+      <hr />
+
+      <section class="my-5" id="customersSection">
+        <h1>Compte clients</h1>
+
+        <ul id="customersList"></ul>
+      </section>
+    </main>
+  </body>
+</html>
