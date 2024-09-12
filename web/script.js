@@ -41,37 +41,7 @@ const customersSection = document.getElementById('customersSection')
 /**
  * @type {Customer[]}
  */
-const customers = []
-
-customerForm.addEventListener('submit', (event) => {
-  event.preventDefault()
-  errorsList.innerHTML = ''
-
-  const formData = new FormData(customerForm)
-  const formDataObject = Object.fromEntries(formData)
-  const isSamePassword = formDataObject.password === formDataObject.passwordConfirmation
-  if (!isSamePassword) {
-    const li = document.createElement('li')
-    li.className = "error"
-    li.innerHTML = `
-      <strong>Erreur:</strong>
-      <span>Les mots de passe ne sont pas identiques.</span>
-    `
-    errorsList.appendChild(li)
-  }
-
-  const isValid = errorsList.children.length <= 0
-  if (isValid) {
-    errorsList.style.display = 'none'
-    successMessage.style.display = 'block'
-    customerForm.reset()
-    customers.push(formDataObject)
-    renderCustomers(customers)
-  } else {
-    errorsList.style.display = 'block'
-    successMessage.style.display = 'none'
-  }
-})
+const customers = JSON.parse(localStorage.getItem('customers') ?? '[]')
 
 /**
  *
@@ -106,3 +76,36 @@ const renderCustomers = (customers) => {
     customersList.appendChild(li)
   }
 }
+
+renderCustomers(customers)
+
+customerForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+  errorsList.innerHTML = ''
+
+  const formData = new FormData(customerForm)
+  const formDataObject = Object.fromEntries(formData)
+  const isSamePassword = formDataObject.password === formDataObject.passwordConfirmation
+  if (!isSamePassword) {
+    const li = document.createElement('li')
+    li.className = "error"
+    li.innerHTML = `
+      <strong>Erreur:</strong>
+      <span>Les mots de passe ne sont pas identiques.</span>
+    `
+    errorsList.appendChild(li)
+  }
+
+  const isValid = errorsList.children.length <= 0
+  if (isValid) {
+    errorsList.style.display = 'none'
+    successMessage.style.display = 'block'
+    customerForm.reset()
+    customers.push(formDataObject)
+    localStorage.setItem('customers', JSON.stringify(customers))
+    renderCustomers(customers)
+  } else {
+    errorsList.style.display = 'block'
+    successMessage.style.display = 'none'
+  }
+})
